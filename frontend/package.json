@@ -19,7 +19,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "deployServer": "scp -r ./build/* stmelik@51.250.22.190:/home/stmelik/mesto-react"
   },
   "eslintConfig": {
     "extends": [
