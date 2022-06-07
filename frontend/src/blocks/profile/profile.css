@@ -1,0 +1,21 @@
+.profile {
+    padding: 40px 200px 51px;
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+    row-gap: 26px;
+}
+
+@media screen and (max-width: 1280px) {
+    .profile {
+        padding: 40px calc(19px + (200 - 19) * ((100vw - 320px) / (1280 - 320))) 51px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .profile {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-bottom: calc(36px + (51 - 36) * ((100vw - 320px) / (768 - 320)));
+    }
+}

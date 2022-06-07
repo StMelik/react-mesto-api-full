@@ -1,0 +1,18 @@
+.popup__form-label {
+    position: relative;
+    display: block;
+}
+
+.popup__form-label:first-of-type {
+    margin-bottom: 25px;
+}
+
+.popup__form-label:last-of-type {
+    margin-bottom: 45px;
+}
+
+@media screen and (max-width: 1280px) {
+    .popup__form-label:last-of-type {
+        margin-bottom: calc(42px + (45 - 42) * ((100vw - 320px) / (1280 - 320)));
+    }
+}

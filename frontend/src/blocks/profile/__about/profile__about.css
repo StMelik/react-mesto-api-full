@@ -1,0 +1,9 @@
+.profile__about {
+    font-size: calc(14px + (18 - 14) * ((100vw - 320px) / (1280 - 320)));
+    line-height: 1.21;
+    margin: 0;
+    align-self: start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

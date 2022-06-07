@@ -1,0 +1,9 @@
+.popup__about {
+    margin-bottom: 48px;
+}
+
+@media screen and (max-width: 1280px) {
+    .popup__about {
+        margin-bottom: calc(45px + (48 - 45) * ((100vw - 320px) / (1280 - 320)));
+    }
+}
