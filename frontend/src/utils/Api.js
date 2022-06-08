@@ -4,12 +4,16 @@ export default class Api {
         this._headers = options.headers
     }
 
-    _fetch(path, method, addBody) {
+    _fetch({ path, method, body = null, token }) {
         const url = this._baseUrl + path
         return fetch(url, {
             method,
-            headers: this._headers,
-            body: addBody ? addBody() : null
+            // credentials: 'include',
+            headers: {
+                ...this._headers,
+                authorization: 'Bearer ' + token
+            },
+            body
         })
             .then(res => {
                 if (res.ok) {
@@ -19,54 +23,43 @@ export default class Api {
             })
     }
 
-    _likeCard(cardId, method) {
-        return this._fetch(`cards/${cardId}/likes`, method)
+    _likeCard(cardId, method, token) {
+        return this._fetch({ path: `cards/${cardId}/likes`, method, token })
     }
 
-    getUserInfo() {
-        return this._fetch('users/me', 'GET')
+    getUserInfo(token) {
+        return this._fetch({ path: 'users/me', method: 'GET', token })
     }
 
-    getInitialCards() {
-        return this._fetch('cards', 'GET')
+    getInitialCards(token) {
+        return this._fetch({ path: 'cards', method: 'GET', token })
     }
 
-    editUserInfo({ name, about }) {
-        const addBody = () => {
-            return JSON.stringify({
-                name,
-                about
-            })
-        }
-        return this._fetch('users/me', 'PATCH', addBody)
+    editUserInfo({ name, about }, token) {
+        const body = JSON.stringify({ name, about })
+
+        return this._fetch({ path: 'users/me', method: 'PATCH', body, token })
     }
 
-    addCard({ name, link }) {
-        const addBody = () => {
-            return JSON.stringify({
-                name,
-                link
-            })
-        }
-        return this._fetch('cards', 'POST', addBody)
+    addCard({ name, link }, token) {
+        const body = JSON.stringify({ name, link })
+
+        return this._fetch({ path: 'cards', method: 'POST', body, token })
     }
 
-    deleteCard(cardId) {
-        return this._fetch(`cards/${cardId}`, 'DELETE')
+    deleteCard(cardId, token) {
+        return this._fetch({ path: `cards/${cardId}`, method: 'DELETE', token })
     }
 
-    editUserAvatar({ avatar }) {
-        const addBody = () => {
-            return JSON.stringify({
-                avatar
-            })
-        }
-        return this._fetch('users/me/avatar', 'PATCH', addBody)
+    editUserAvatar({ avatar }, token) {
+        const body = JSON.stringify({ avatar })
+
+        return this._fetch({ path: 'users/me/avatar', method: 'PATCH', body, token })
     }
 
-    changeLikeCardStatus(cardId, isLiked) {
+    changeLikeCardStatus(cardId, isLiked, token) {
         return isLiked ?
-            this._likeCard(cardId, 'PUT') :
-            this._likeCard(cardId, 'DELETE')
+            this._likeCard(cardId, 'PUT', token) :
+            this._likeCard(cardId, 'DELETE', token)
     }
 }

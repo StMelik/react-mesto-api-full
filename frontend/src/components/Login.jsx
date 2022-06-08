@@ -1,12 +1,12 @@
-import {useState} from "react";
+import { useState } from "react";
 
-function Login({onLogin, loader}) {
+function Login({ onLogin, loader }) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     function handleSubmitForm(evt) {
         evt.preventDefault()
-        onLogin({password, email})
+        onLogin({ password, email })
     }
 
     return (
