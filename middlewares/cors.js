@@ -1,5 +1,6 @@
 const allowedCors = [
   'https://stmelik.store',
+  'http://stmelik.store',
 ];
 
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
