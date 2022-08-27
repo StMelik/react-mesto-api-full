@@ -1,9 +1,0 @@
-.auth__question-link {
-    color: inherit;
-    text-decoration: none;
-    transition: all .3s;
-}
-
-.auth__question-link:hover {
-    opacity: .6;
-}
