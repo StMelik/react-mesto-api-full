@@ -20,7 +20,7 @@ app.use(cors);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect('mongodb://localhost:27017/mestodb');
+mongoose.connect('mongodb+srv://mesto-admin:mesto-password@cluster0.vuxthhi.mongodb.net/?retryWrites=true&w=majority');
 
 app.use(helmet());
 
